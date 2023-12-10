@@ -1,15 +1,25 @@
 import React, { useContext } from "react";
 import { SidebarContext } from "../contexts/SidebarContext";
-import { Link } from "react-router-dom";
 import { IoMdArrowForward } from "react-icons/io";
 import { FiTrash2 } from "react-icons/fi";
 import CartItem from "./CartItem";
 import { CartContext } from "../contexts/CartContext";
+import { useState } from "react";
 
 const Sidebar = () => {
+  const [checkout, setCheckout] = useState(false);
+
   const { isOpen, setIsOpen, handleClose } = useContext(SidebarContext);
 
   const { cart, clearCart, total, itemAmount } = useContext(CartContext);
+
+  const onSubmitOrder = () => {
+    clearCart();
+    setCheckout(true);
+    setTimeout(() => {
+      setCheckout(false);
+    }, 2000);
+  };
 
   return (
     <div
@@ -46,12 +56,18 @@ const Sidebar = () => {
             <FiTrash2 />
           </div>
         </div>
-        <Link
-          to={"/"}
+        <button
+          disabled={!total}
+          onClick={onSubmitOrder}
           className="bg-primary flex p-4 justify-center items-center text-white w-full font-medium"
         >
           Checkout
-        </Link>
+        </button>
+        {checkout ? (
+          <h2 className="text-center">Thank you for your order.</h2>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
