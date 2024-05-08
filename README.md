@@ -1,4 +1,6 @@
-# Ecommerce-React-JS [(Live Demo)](https://ecommerce-79a765.netlify.app/)
+# Ecommerce-React-JS [(Live Demo)](https://ecommerce-react-js.pages.dev/)
+
+A simple **Ecommerce** website built with reactJS and integrated with the FakeStoreAPI that offers a dynamic and responsive shopping experience.
 پروژه **وبسایت فروشگاهی**
 
 ## Screenshots
